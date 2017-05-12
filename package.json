@@ -1,0 +1,75 @@
+{
+    "name": "graphql-lsc",
+    "displayName": "GraphQL Language Server Client",
+    "description": "A GraphQL Language Server Client (alpha stage)",
+    "license": "MIT",
+    "version": "0.1.0",
+    "publisher": "mtsmfm",
+    "engines": {
+        "vscode": "^1.12.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onLanguage:graphql"
+    ],
+    "main": "./out/src/extension",
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^2.3.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
+    },
+    "dependencies": {
+        "mz": "^2.6.0",
+        "vsce": "^1.22.0",
+        "vscode-languageclient": "^3.2.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mtsmfm/vscode-graphql-lsc.git"
+    },
+    "bugs": {
+        "url": "https://github.com/mtsmfm/vscode-graphql-lsc"
+    },
+    "contributes": {
+        "configuration": {
+            "type": "object",
+            "title": "GraphQL Language Server Client",
+            "properties": {
+                "graphql-lsc.commandWithArgs": {
+                    "type": "array",
+                    "default": [],
+                    "description": "Command to execute graphql language server"
+                }
+            }
+        },
+        "languages": [
+            {
+                "id": "graphql",
+                "extensions": [
+                    ".graphql"
+                ],
+                "aliases": [
+                    "GraphQL"
+                ],
+                "configuration": "./graphql.configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "graphql",
+                "scopeName": "source.graphql",
+                "path": "./syntaxes/graphql.json"
+            }
+        ]
+    }
+}
